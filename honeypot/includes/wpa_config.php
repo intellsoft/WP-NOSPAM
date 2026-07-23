@@ -1,0 +1,5 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) exit; 
+$GLOBALS['wpa_version']					= '2.4.02';
+$GLOBALS['wpa_field_name'] 				= get_option('wpa_field_name');
+$GLOBALS['wpa_error_message'] 			= get_option('wpa_error_message');
