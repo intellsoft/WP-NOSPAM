@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NO SPAM | افزونه ضد اسپم هانی‌پات وردپرس</title>
+    <!-- فونت وزیرمتن از گوگل -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9edf5 100%);
+            color: #2d3436;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* هدر */
+        header {
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            color: white;
+            padding: 80px 0 60px;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header .subtitle {
+            font-size: 1.4rem;
+            font-weight: 300;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background: #fff;
+            color: #6c5ce7;
+            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: #f0edff;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(108, 92, 231, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border-color: #fff;
+            color: #fff;
+        }
+
+        .btn-outline:hover {
+            background: #fff;
+            color: #6c5ce7;
+            transform: translateY(-3px);
+        }
+
+        /* بخش‌های عمومی */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #2d3436;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #6c5ce7;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: #636e72;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ویژگی‌ها */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 25px;
+            padding: 40px 25px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(108, 92, 231, 0.08);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(108, 92, 231, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #2d3436;
+        }
+
+        .feature-card p {
+            color: #636e72;
+            font-size: 1rem;
+        }
+
+        /* نحوه کار */
+        .steps {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .step {
+            background: white;
+            border-radius: 25px;
+            padding: 30px 25px;
+            text-align: center;
+            flex: 1 1 250px;
+            max-width: 280px;
+            box-shadow: 0 15px 45px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .step:hover {
+            transform: scale(1.03);
+        }
+
+        .step-number {
+            background: #6c5ce7;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+
+        /* بخش آمار */
+        .stats {
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            color: white;
+            text-align: center;
+            clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+            padding: 100px 0;
+        }
+
+        .stats .section-title h2 {
+            color: white;
+        }
+
+        .stats .section-title h2::after {
+            background: white;
+        }
+
+        .stats-grid {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 30px 40px;
+            min-width: 160px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin-top: 10px;
+        }
+
+        /* نصب */
+        .install-code {
+            background: #2d3436;
+            color: #dfe6e9;
+            border-radius: 15px;
+            padding: 25px;
+            font-family: 'Courier New', monospace;
+            direction: ltr;
+            text-align: left;
+            font-size: 1rem;
+            margin: 20px auto;
+            max-width: 700px;
+            overflow-x: auto;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        /* لینک‌ها */
+        .links {
+            background: white;
+        }
+
+        .links-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .link-card {
+            background: #f8f9ff;
+            border-radius: 25px;
+            padding: 30px 40px;
+            text-align: center;
+            transition: 0.3s;
+            border: 1px solid #e0e0ff;
+            min-width: 220px;
+        }
+
+        .link-card:hover {
+            background: #ede7ff;
+            transform: translateY(-5px);
+        }
+
+        .link-card a {
+            text-decoration: none;
+            color: #6c5ce7;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* فوتر */
+        footer {
+            background: #2d3436;
+            color: #b2bec3;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.95rem;
+        }
+
+        footer a {
+            color: #a29bfe;
+            text-decoration: none;
+        }
+
+        /* ریسپانسیو */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            .stat-item {
+                padding: 20px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- هدر -->
+    <header>
+        <div class="container">
+            <h1>🛡️ NO SPAM</h1>
+            <p class="subtitle">
+                افزونه ضد اسپم هانی‌پات وردپرس – محافظت هوشمند، بدون آزار کاربران واقعی
+            </p>
+            <div class="hero-buttons">
+                <a href="https://github.com/YOUR_USERNAME/NO-SPAM" class="btn btn-primary" target="_blank">
+                    📥 دانلود از گیت‌هاب
+                </a>
+                <a href="https://intellsoft.ir" class="btn btn-outline" target="_blank">
+                    🌐 IntellSoft.ir
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- بخش ویژگی‌ها -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>✨ ویژگی‌های برجسته</h2>
+                <p>همه آنچه برای یک محافظت بی‌نقص نیاز دارید، در یک بسته سبک و رایگان</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🍯</div>
+                    <h3>فناوری Honeypot</h3>
+                    <p>فیلد مخفی که فقط ربات‌ها پر می‌کنند، بدون نیاز به کپچا</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>تغییر خودکار روزانه</h3>
+                    <p>نام فیلد تله هر روز عوض می‌شود تا ربات‌ها نتوانند سازگار شوند</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧩</div>
+                    <h3>سازگار با همه فرم‌سازها</h3>
+                    <p>Contact Form 7، Gravity Forms، WPForms، Elementor و ۱۰+ افزونه دیگر</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>آمار زنده داشبورد</h3>
+                    <p>مشاهده تعداد اسپم‌های مسدود شده امروز، هفته، ماه و کل در پیشخوان</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>سبک و بدون API خارجی</h3>
+                    <p>هیچ تماسی با سرورهای ثالث ندارد؛ سرعت سایت شما حفظ می‌شود</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>طراحی واکنش‌گرا</h3>
+                    <p>منوی فارسی، تنظیمات ساده و رابط کاربری مدرن در پنل مدیریت</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- نحوه کار -->
+    <section class="how-it-works" style="background: #fff;">
+        <div class="container">
+            <div class="section-title">
+                <h2>⚙️ NO SPAM چطور کار می‌کند؟</h2>
+                <p>سه گام ساده برای محافظت کامل از فرم‌های شما</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>نصب و فعال‌سازی</h3>
+                    <p>افزونه را مانند هر افزونه دیگر وردپرس نصب و فعال کنید.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>تنظیمات خودکار</h3>
+                    <p>نیازی به پیکربندی پیچیده نیست؛ فیلد هانی‌پات به‌طور خودکار به فرم‌ها اضافه می‌شود.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>آرامش خاطر</h3>
+                    <p>ربات‌ها مسدود می‌شوند و کاربران واقعی بدون هیچ مزاحمتی به کار خود ادامه می‌دهند.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- آمار فرضی (جهت نمایش) -->
+    <section class="stats">
+        <div class="container">
+            <div class="section-title">
+                <h2>📈 آمار دفاعی NO SPAM</h2>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">۱۲۴,۰۰۰+</div>
+                    <div class="stat-label">اسپم مسدود شده</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">۱۰,۰۰۰+</div>
+                    <div class="stat-label">نصب فعال</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">۴.۹ ⭐</div>
+                    <div class="stat-label">امتیاز کاربران</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- نصب -->
+    <section class="installation">
+        <div class="container">
+            <div class="section-title">
+                <h2>🚀 نصب در یک دقیقه</h2>
+                <p>برای نصب دستی، پوشه افزونه را در مسیر plugins کپی کنید یا از مخزن گیت‌هاب کلون کنید</p>
+            </div>
+            <div class="install-code">
+                git clone https://github.com/YOUR_USERNAME/NO-SPAM.git<br>
+                cd NO-SPAM<br>
+                # سپس پوشه را به /wp-content/plugins/ منتقل کنید
+            </div>
+            <p style="text-align: center; margin-top: 20px;">
+                یا فایل ZIP را از <a href="https://github.com/YOUR_USERNAME/NO-SPAM/releases" target="_blank">صفحه انتشارات گیت‌هاب</a> دانلود کنید.
+            </p>
+        </div>
+    </section>
+
+    <!-- لینک‌های مهم -->
+    <section class="links">
+        <div class="container">
+            <div class="section-title">
+                <h2>🔗 لینک‌های مفید</h2>
+            </div>
+            <div class="links-container">
+                <div class="link-card">
+                    <span style="font-size:2.5rem;">🐙</span><br>
+                    <a href="https://github.com/YOUR_USERNAME/NO-SPAM" target="_blank">مخزن گیت‌هاب</a>
+                </div>
+                <div class="link-card">
+                    <span style="font-size:2.5rem;">🌐</span><br>
+                    <a href="https://intellsoft.ir" target="_blank">IntellSoft.ir</a>
+                </div>
+                <div class="link-card">
+                    <span style="font-size:2.5rem;">📚</span><br>
+                    <a href="https://github.com/YOUR_USERNAME/NO-SPAM/wiki" target="_blank">راهنمای کامل</a>
+                </div>
+                <div class="link-card">
+                    <span style="font-size:2.5rem;">❤️</span><br>
+                    <a href="https://intellsoft.ir/donate" target="_blank">حمایت مالی</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- فوتر -->
+    <footer>
+        <div class="container">
+            <p>
+                توسعه یافته با ❤️ توسط <a href="https://intellsoft.ir" target="_blank">IntellSoft</a> | 
+                مبتنی بر WP Armour | 
+                تحت مجوز GPLv2
+            </p>
+            <p style="margin-top:10px;">
+                © 2024 کلیه حقوق محفوظ است.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
