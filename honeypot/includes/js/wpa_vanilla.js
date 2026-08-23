@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     wpa_unique_id = wpa_field_info.wpa_field_value;
     wpa_add_test = wpa_field_info.wpa_add_test;
 
-    wpa_hidden_field            = "<div id='altEmail_container' class='altEmail_container'><label for='alt_s'>Alternative:</label><input type='text' id='alt_s' name='alt_s' ></div><span class='wpa_hidden_field' style='display:none;height:0;width:0;'><label>WPA <input type='text' name='"+wpa_field_name+"' value='"+wpa_unique_id+"' /></label></span>";
+    // FIX: Added style='display:none !important;' to the altEmail_container div
+    wpa_hidden_field = "<div id='altEmail_container' class='altEmail_container' style='display:none !important;'><label for='alt_s'>Alternative:</label><input type='text' id='alt_s' name='alt_s' ></div><span class='wpa_hidden_field' style='display:none;height:0;width:0;'><label>WPA <input type='text' name='"+wpa_field_name+"' value='"+wpa_unique_id+"' /></label></span>";
 
     wpa_add_honeypot_field();
 
